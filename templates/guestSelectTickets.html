@@ -1,0 +1,66 @@
+{% extends 'index.html' %} {% block title %} GuestPurchase {% block content %} {% load crispy_forms_tags %}
+{% load static %}
+<html>
+     <head>
+            <link href="{% static 'css/tooplate-infinite-loop.css' %}" rel="stylesheet"/>
+        <section>
+            <div>
+                <ul>
+                    <li><a href="index.html"><p style="margin-top: 0px;"></p></a></li>
+                </ul>
+            </div>
+        </section>
+    </head>
+
+
+    <body>
+        <div class = "col-lg-8 col-md-18 col-10 mx-auto">
+        <p>
+            <div class = "primary-text">{{ film.title }}</div>
+            <div class = "secondary-text">{{ film.description }}</div>
+            <div class = "secondary-text"> Age Rating: 
+                {{ film.age_rating }}</div>
+            <div class = "secondary-text">Length: {{ duration }} minutes</div>
+            </p>
+        <p>
+        <h4>Select number of tickets</h4>
+        <form method="post" class="drop-down">
+            {% csrf_token %} {{ form|crispy }}
+            <button type="submit" class="btn">Submit</button>
+        </form>
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        </p> {% endblock %}
+        <p>
+            <h2>{{ film.title }}</h2>
+            <p>{{ film.description }}</p>
+            <h5>Age Rating: {{ film.age_rating }}</h5>
+            <h5>Length: {{ duration }} minutes</h5>
+            </p>
+            <br>
+        <h5>Show is at {{ show.time }} on {{ show.date }}</h5>
+        <br>
+        <p>
+        <h4>Select number of tickets</h4>
+        <form method="post" class="">
+            {% csrf_token %} {{ form|crispy }}
+            <br>
+            <br><button type="submit" class="tm-btn-primary">Submit</button>
+        </form>
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+            {% endfor %}
+        </ul>
+    </div>
+        {% endif %}
+        </p> 
+        {% endblock %}
+    </body>
+</html>

@@ -1,0 +1,48 @@
+<html>
+<head>
+    <style type="text/css">
+        .sidebar {
+            height:100%;
+            width:160px;
+            position: fixed;
+            z-index:1;
+            top:0;
+            left:0;
+            background-color: rgb(93, 139, 226);
+            overflow-x: hidden;
+            padding-top:20px;
+        }
+
+        .sidebar a {
+            padding:6px 8px 6px 16px;
+            text-decoration: none;
+            color: rgb(155, 155, 155);
+            display: block;}
+
+        .sidebar a:hover{
+            color:rgb(224, 224, 224);
+        }
+
+        .main{
+            margin-left:200px;
+            padding: 0px 10px;
+        }
+    </style>
+    <title>{% block title %}UWEFlix{% endblock %}</title>
+</head> 
+
+<body>
+    <div class="sidebar">
+        <a href="{% url 'main'%}">Purchase Tickets</a>
+        <a href="{% url 'login'%}">Login</a>
+        <a href="{% url 'studentRegister'%}">Register</a>
+
+    </div>
+
+    <div id="content", name="content", class="main">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+{% extends "studentRepHome.html" %}
+{% block title %} Request Further Discount {% endblock %} {% block content %} {% load crispy_forms_tags %}
+<br>
+<h3>Request Further Discount</h3>
+<br>
+<h5>Your club discount is currently <b>{{currentDiscount}}%</b>.</h5>
+<br>
+
+{% if existing %}
+<br>
+<h5>A discount request has been successfully made for this account. Please await approval or denial before making another.</h5>
+{% else %}
+<form method="post" class="form-group">
+    {% csrf_token %} {{ form|crispy }}
+    <button type="submit" class="btn btn-success">Make Request</button>
+</form>
+{% endif %}
+
+<br>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+    {% endfor %}
+</ul>
+{% endif %} {% endblock %}

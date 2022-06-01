@@ -1,0 +1,241 @@
+/*
+
+Tooplate 2117 Infinite Loop
+
+https://www.tooplate.com/view/2117-infinite-loop
+
+*/
+
+@import url("https://fonts.googleapis.com/css?family=Raleway:100,300,400,500,700,900");
+
+body {
+	font-family: "Raleway", sans-serif;
+	font-size: 1.2em;
+  color: #707070;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.content{
+  padding-right: 400px;
+  align-items: left;
+  
+}
+a {
+  transition: all 0.3s ease;
+  color: rgb(220, 220, 220);
+}
+
+a:hover,
+a:focus {
+  text-decoration: none;
+  color: #D40;
+}
+
+a:focus {
+  outline: none;
+}
+
+.btn {
+  padding: 8px 32px;
+  width:120px;
+  height:50px;
+  background-color: darkgreen;
+  color: white;
+}
+
+.btn:hover {
+  background-color: rgb(1, 147, 1);
+}
+
+blockquote {
+  font-size: 0.86em;
+  line-height: 1.8em;
+}
+
+.tm-section-pad-top {
+  padding-top: 80px;
+  padding-bottom: 40px;
+}
+
+.tm-content-box {
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+
+.main-text{
+  color: rgb(0, 0, 0);
+  font-size: 50px;
+  padding-bottom: 10px;
+  font-weight: 500;
+  font: Verdana;
+}
+
+.primary-text {
+  color: rgb(0, 0, 0);
+  font-size: 70px;
+  padding-bottom: 10px;
+  font-weight: 500;
+  font: Verdana;
+}
+
+.secondary-text {
+  color: rgb(255, 255, 255);
+  font-size: 25px;
+  padding-bottom: 10px;
+  font-weight: 450;
+  font: Verdana;
+}
+
+.third {
+  color: rgb(0, 0, 0);
+  font-size: 30px;
+  font-weight: bolder;
+  padding-bottom: 10px;
+  font: Verdana;
+}
+.box{
+  fill: orange;
+  stroke: black;
+}
+.rectangle{
+  width:200px;
+  height:100px;
+  background:rgb(0, 0, 0);
+  display: table;
+}
+
+.date-config{
+  width: 50%;
+  font-size: 28px;
+  border-color: rgb(255, 255, 255);
+  background-color: transparent;
+  border-radius: 15px;
+  text-align: center;
+  box-sizing: border-box;
+  font: Verdana
+}
+
+.form-config-2{
+  width: 60%;
+  font-size: 28px;
+  border-color: grey;
+  border-radius: 15px;
+  text-align: center;
+  box-sizing: border-box;
+  font: Verdana
+}
+
+.spacing{
+  padding-bottom: 55px;
+}
+
+.text-log-in {
+  padding-right: 50px;
+  padding-left:  50px;
+  ;
+}
+
+.dropbtn {
+background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.drop-down{
+  background-color: transparent;
+  border-radius: 5px;
+}
+
+.bckground {
+  padding-top: 30px;
+  
+}
+
+.tm-font-big {
+  font-size: 1.25rem;
+}
+
+.tm-btn-primary {
+  color: white;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+}
+
+/* Navbar */
+
+.tm-navbar {
+  position: fixed;
+  width: 100%;
+  z-index: 200;
+  background-color: transparent;
+  transition: all 0.3s ease;
+}
+
+.tm-navbar.scroll {
+  background-color: white;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.navbar-brand {
+  color: rgb(0, 0, 0);
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.nav-item {
+  list-style: none;
+}
+
+.tm-nav-link {
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  text-align: 10px;
+  padding-left: 20px;
+}
+
+
+/* Hero */
+
+#infinite {
+	background-color: #222;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto;
+  background-image: url('/static/img/infinite-loop-012.jpg');
+}
+
+
+@media (min-height: 600px) and (min-width: 1920px) {
+  #infinite {
+    background-size: 120% ;
+  }
+}
+
+@media (min-height: 830px) {
+  #infinite {
+    background-position: center -210px;
+  }
+}
+
+@media (min-height: 680px) and (max-height: 829px) {
+  #infinite {
+    background-position: center -300px;
+  }
+}
+
+@media (min-height: 500px) and (max-height: 679px) {
+  #infinite {
+    background-position: center -400px;
+  }
+}
+
+@media (max-height: 499px) {
+  #infinite {
+    background-position: center -450px;
+  }
+}

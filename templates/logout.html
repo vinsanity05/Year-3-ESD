@@ -1,0 +1,22 @@
+{% extends 'manager.html' %}
+{% block content %}
+    <!--Log Out Tab Design-->
+    <div id="menu7" class="tab-pane in active">
+        <div class="row justify-content-center mb-4">
+            <div class="col-11">
+                <div class="form-card">
+                    <h3 class="mt-5 mb-5 text-center">Are you sure you want to log out?
+                    </h3>
+                    <div class="row justify-content-center">
+                        <div class="col-lg-6 col-12">
+                            <a class="btn bg-gradient-primary placeicon col-12"
+                               href="{% url 'logout' %}" role="button"> Logout
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

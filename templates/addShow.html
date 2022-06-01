@@ -1,0 +1,151 @@
+{% extends 'cinemaManagerDash.html' %}
+{% block content %}
+    <!--<Manage Shows Tab Design-->
+    <div id="menu6" class="tab-pane in active">
+        <div class="row justify-content-center">
+            <div class="col-11">
+                <div class="form-card">
+                    <h3 class="mt-5 mb-5 text-center">Add/ Delete Show</h3>
+                    {% if FilmForm.errors %}
+                        {% for field in ShowForm %}
+                            {% for error in field.errors %}
+                                <div class="alert alert-danger alert-dismissible fade show"
+                                     role="alert">
+                                    <strong>{{ error|escape }}</strong>
+                                    <button type="button" class="btn-close"
+                                            data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                        {% for error in ShowForm.non_field_errors %}
+                            <div class="alert alert-danger alert-dismissible fade show"
+                                 role="alert">
+                                <strong>{{ error|escape }}</strong>
+                                <button type="button" class="btn-close"
+                                        data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+
+                    {% if messages %}
+                        <ul class="messages">
+                            {% for message in messages %}
+                                <div class="alert alert-success alert-dismissible fade show"
+                                     role="alert">
+                                    <svg class="bi flex-shrink-0 me-2" width="24"
+                                         height="24" role="img" aria-label="Success:">
+                                        <use xlink:href="#check-circle-fill"/>
+                                    </svg>
+                                    <strong>{{ message }}</strong>
+                                    <button type="button" class="close"
+                                            data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+
+                    <div class="row">
+                        <div class="col-lg-6 col-12">
+                            <form method="POST">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-lg-12 col-12">
+                                        <div class="input-group input-group-outline">
+
+                                            <label>Film</label>
+                                            {{ ShowForm.film }}
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12 col-12">
+                                        <div class="input-group input-group-outline">
+                                            <label for="birthday">Date</label>
+                                            {{ ShowForm.date }}
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12 col-12">
+                                        <div class="input-group input-group-outline">
+                                            <label for="birthday">Time</label>
+                                            {{ ShowForm.time }}
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12 col-12">
+                                        <div class="input-group input-group-outline">
+                                            <label for="birthday">Screen</label>
+                                            {{ ShowForm.screen }}
+                                        </div>
+                                    </div>
+                                    <div class="row justify-content-center">
+                                        <div class="col-6">
+                                            <div class="input-group input-group-outline">
+                                                <label>Student price</label>
+                                                {{ ShowForm.student_price }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row justify-content-center">
+                                        <div class="col-6">
+                                            <div class="input-group input-group-outline">
+                                                <label>Adult price</label>
+                                                {{ ShowForm.adult_price }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row justify-content-center">
+                                        <div class="col-6">
+                                            <div class="input-group input-group-outline">
+                                                <label>Child price</label>
+                                                {{ ShowForm.child_price }}
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12 col-12"><input type="submit"
+                                                                         name="ShowFormSubmit"
+                                                                         value="Add Show"
+                                                                         class="btn btn-primary bg-gradient-primary placeicon">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-lg-6 col-12">
+                            <form method="POST">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-lg-12 col-12">
+                                        <div class="input-group">
+                                            <label>Film</label>
+                                            {{ ShowForm.film }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12 col-12">
+                                        <input type="submit"
+                                               value="Delete Film"
+                                               name="DeleteShowFormSubmit"
+                                               class="btn btn-primary bg-gradient-primary placeicon">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

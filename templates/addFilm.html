@@ -1,0 +1,96 @@
+{% extends 'cinemaManagerDash.html' %}
+{% block content %}
+
+
+    <div id="menu4" class="tab-pane in active">
+        <div class="row justify-content-center">
+            <div class="col-11">
+                <div class="form-card">
+                    <h3 class="mt-5 mb-5 text-center">Enter Film Details</h3>
+                    {% if FilmForm.errors %}
+                        {% for field in FilmForm %}
+                            {% for error in field.errors %}
+                                <div class="alert alert-danger alert-dismissible fade show"
+                                     role="alert">
+                                    <strong>{{ error|escape }}</strong>
+                                    <button type="button" class="btn-close"
+                                            data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                        {% for error in FilmForm.non_field_errors %}
+                            <div class="alert alert-danger alert-dismissible fade show"
+                                 role="alert">
+                                <strong>{{ error|escape }}</strong>
+                                <button type="button" class="btn-close"
+                                        data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    <form method="POST">
+                        {% csrf_token %}
+                        {% if messages %}
+                            <ul class="messages">
+                                {% for message in messages %}
+                                    <div class="alert alert-success alert-dismissible fade show"
+                                         role="alert">
+                                        <svg class="bi flex-shrink-0 me-2" width="24"
+                                             height="24" role="img" aria-label="Success:">
+                                            <use xlink:href="#check-circle-fill"/>
+                                        </svg>
+                                        <strong>{{ message }}</strong>
+                                        <button type="button" class="close"
+                                                data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                        <div class="row justify-content-center">
+                            <div class="col-6">
+                                <div class="input-group">
+                                    <label>Title</label>
+                                    {{ FilmForm.title }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-6">
+                                <div class="input-group input-group-outline">
+                                    <label>Age Rating</label>
+                                    {{ FilmForm.age_ratting }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-6">
+                                <div class="input-group">
+                                    <label>Duration</label>
+                                    {{ FilmForm.duration }}
+                                </div>
+                            </div>
+                        </div> 
+                        <div class="row justify-content-center">
+                            <div class="col-6">
+                                <div class="input-group input-group-outline">
+                                    <label>Description</label>
+                                    {{ FilmForm.description }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-6">
+                                <input type="submit" name="FilmFormSubmit" value="Apply"
+                                       class="btn btn-primary bg-gradient-primary placeicon">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

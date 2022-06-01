@@ -1,0 +1,97 @@
+{% extends 'cinemaManagerDash.html' %}
+{% block content %}
+
+<div id="menu2" class="tab-pane in active">
+    <div class="row justify-content-center">
+        <div class="col-11">
+            <div class="form-card">
+                <h3 class="mt-5 mb-5 text-center">Register Club Representative</h3>
+                {% if ClubRepresentativeForm.errors %}
+                    {% for field in ClubRepresentativeForm %}
+                        {% for error in field.errors %}
+                            <div class="alert alert-danger alert-dismissible fade show"
+                                 role="alert">
+                                <strong>{{ error|escape }}</strong>
+                                <button type="button" class="btn-close"
+                                        data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                    {% for error in ClubRepresentativeForm.non_field_errors %}
+                        <div class="alert alert-danger alert-dismissible fade show"
+                             role="alert">
+                            <strong>{{ error|escape }}</strong>
+                            <button type="button" class="btn-close"
+                                    data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                <form method="POST">
+                    {% csrf_token %}
+                    {% if messages %}
+                        <ul class="messages">
+                            {% for message in messages %}
+                                <div class="alert alert-success alert-dismissible fade show"
+                                     role="alert">
+                                    <svg class="bi flex-shrink-0 me-2" width="24"
+                                         height="24" role="img" aria-label="Success:">
+                                        <use xlink:href="#check-circle-fill"/>
+                                    </svg>
+                                    <strong>{{ message }}</strong>
+                                    <button type="button" class="close"
+                                            data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                    <div class="row justify-content-center">
+                        <div class="col-lg-6 col-12">
+                            <div class="input-group input-group-outline">
+                                <label>Club</label>
+                                {{ ClubRepresentativeForm.club }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-lg-6 col-12">
+                            <div class="input-group input-group-outline">
+                                <label>First Name</label>
+                                {{ ClubRepresentativeForm.first_name }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-lg-6 col-12">
+                            <div class="input-group input-group-outline">
+                                <label>Last Name</label>
+                                {{ ClubRepresentativeForm.last_name }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center mb-4">
+                        <div class="col-lg-6 col-12">
+                            <div class="input-group input-group-outline">
+                                <label for="birthday">Birthday:</label>
+                                {{ ClubRepresentativeForm.date_of_birth }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-lg-6 col-12"><input type="submit"
+                                                            name="ClubRepresentativeFormSubmit"
+                                                            value="Apply"
+                                                            class="btn btn-primary bg-gradient-primary placeicon">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

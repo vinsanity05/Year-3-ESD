@@ -1,0 +1,127 @@
+{% extends 'cinemaManagerDash.html' %}
+{% block content %}
+    <!--Register Student Club Tab Design-->
+    <div id="menu1" class="tab-pane in active">
+        <div class="row justify-content-center">
+            <div class="col-11">
+                <div class="form-card">
+                    <h3 class="mt-5 mb-5 text-center">Register Student Club Details</h3>
+                    {% if StudentClubForm.errors %}
+                        {% for field in StudentClubForm %}
+                            {% for error in field.errors %}
+                                <div class="alert alert-danger alert-dismissible fade show"
+                                     role="alert">
+                                    <strong>{{ error|escape }}</strong>
+                                    <button type="button" class="btn-close"
+                                            data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                        {% for error in StudentClubForm.non_field_errors %}
+                            <div class="alert alert-danger alert-dismissible fade show"
+                                 role="alert">
+                                <strong>{{ error|escape }}</strong>
+                                <button type="button" class="btn-close"
+                                        data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+
+                    <form method="POST">
+                        {% csrf_token %}
+                        {% if messages %}
+                            <ul class="messages">
+                                {% for message in messages %}
+                                    <div class="alert alert-success alert-dismissible fade show"
+                                         role="alert">
+                                        <svg class="bi flex-shrink-0 me-2" width="24"
+                                             height="24" role="img" aria-label="Success:">
+                                            <use xlink:href="#check-circle-fill"/>
+                                        </svg>
+                                        <strong>{{ message }}</strong>
+                                        <button type="button" class="close"
+                                                data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                        <div class="row">
+                            <div class="col-lg-6 col-12">
+                                <div class="input-group input-group-outline">
+                                    <label>Name</label>
+                                    {#                                                                <input type="text" placeholder="">#}
+                                    {{ StudentClubForm.name }}
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-12">
+                                <div class="input-group">
+                                    <label>Email</label>
+                                    {#                                                                <input type="email" name="ben_nm" id="ben-nm" placeholder="">#}
+                                    {{ StudentClubForm.email }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-12">
+                                <div class="input-group input-group-outline">
+                                    <label>Mobile</label>
+                                    {#                                                                <input type="tel" placeholder="">#}
+                                    {{ StudentClubForm.mobile }}
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-12">
+                                <div class="input-group input-group-outline">
+                                    <label>Landline</label>
+                                    {#                                                                <input type="tel" placeholder="">#}
+                                    {{ StudentClubForm.landLine }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-12">
+                                <div class="input-group input-group-outline">
+                                    <label>Address</label>
+                                    {#                                                                <textarea type="text" placeholder=""></textarea>#}
+                                    {{ StudentClubForm.address }}
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-6">
+                                <div class="input-group input-group-outline">
+                                    <label>City</label>
+                                    {#                                                                <input type="text" placeholder="">#}
+                                    {{ StudentClubForm.city }}
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-6">
+                                <div class="input-group input-group-outline">
+                                    <label>Zip Code</label>
+                                    {#                                                                <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="5" placeholder="">#}
+                                    {{ StudentClubForm.zip_code }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-12">
+                                <input type="submit" value="Apply"
+                                       name="StudentClubFormSubmit"
+                                       class="btn btn-primary bg-gradient-primary placeicon">
+                            </div>
+                        </div>
+                        <!-- <div class="row">
+                            <div class="col-md-12">
+                                <p class="text-center mb-5" id="below-btn">
+                                    <a href="#">Use a test card</a>
+                                </p>
+                            </div>
+                        </div> -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Register Club Representative Tab Design-->
+{% endblock %}

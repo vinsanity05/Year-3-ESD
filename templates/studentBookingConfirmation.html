@@ -1,0 +1,28 @@
+{% extends "studentHome.html" %}
+ {% block title %} Purchase Tickets {% endblock %} 
+ {% block content %} {% load crispy_forms_tags %}
+ {% if totalPrice %}
+ <br>
+ <h3>Your Booking is Confirmed!</h3>
+ <br>
+ <h4>You are going to watch <b>{{ film.title }}</b></h4>
+<h5>On {{ showing.date }} at {{ showing.time }}</h5>
+<br>
+<h5>This movie will be shown in <b>Screen {{ screen.screenNumber }}</b></h5>
+<br>
+<h5>Purchase Summary:</h5>
+<br>
+ <h6>Student Ticket</h6>
+<h6>Total Price: {{ totalPrice }}</h6>
+{% if discountPrice %}
+<h6>Discounted Price: <b>{{ discountPrice }}</b></h5>
+{% endif %}
+<br>
+<h6>Your remaining balance is {{ balance }}</h6>
+<br>
+<h6>Booking reference: <b>{{ bookingId }}</b></h6>
+<p>You will need this reference number to make a cancellation request.</p>
+  {% else %}
+  <h6>The booking was unsuccessful, please go back.</h6>
+  {% endif %}
+ {% endblock %}

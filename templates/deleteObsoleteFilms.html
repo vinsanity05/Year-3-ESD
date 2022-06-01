@@ -1,0 +1,112 @@
+{% extends 'cinemaManagerDash.html' %}
+{% block content %}
+    <!--<Manage Shows Tab Design-->
+    <div id="menu5" class="tab-pane in active">
+        <div class="row justify-content-center">
+            <div class="col-11">
+                <div class="form-card">
+                    <h3 class="mt-5 mb-5 text-center">Remove Films</h3>
+                    {% if FilmForm.errors %}
+                        {% for field in ShowForm %}
+                            {% for error in field.errors %}
+                                <div class="alert alert-danger alert-dismissible fade show"
+                                     role="alert">
+                                    <strong>{{ error|escape }}</strong>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                        {% for error in ShowForm.non_field_errors %}
+                            <div class="alert alert-danger alert-dismissible fade show"
+                                 role="alert">
+                                <strong>{{ error|escape }}</strong>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+
+                    {% if messages %}
+                        <ul class="messages">
+                            {% for message in messages %}
+                                <div class="alert alert-success alert-dismissible fade show"
+                                     role="alert">
+                                    <svg class="bi flex-shrink-0 me-2" width="24" height="24"
+                                         role="img" aria-label="Success:">
+                                        <use xlink:href="#check-circle-fill"/>
+                                    </svg>
+                                    <strong>{{ message }}</strong>
+                                    <button type="button" class="close" data-dismiss="alert"
+                                            aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+
+                    <div class="card shadow mb-4 mt-5">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Remove Films
+                            </h6>
+                        </div>
+                        {% if films %}
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table" id="dataTable" width="100%"
+                                           cellspacing="0">
+                                        <thead>
+                                        <tr>
+                                            <th>Sr. #</th>
+                                            <th>Film Name</th>
+                                            <th class="text-center">Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for film in films %}
+                                            <tr>
+                                                <td>{{ forloop.counter }}</td>
+                                                <td>film</td>
+                                                <td class="py-0 align-middle">
+                                                    <form method="post">
+                                                        {% csrf_token %}
+                                                        <input type="hidden" name="id" value="{{ film.id }}">
+                                                        <div class="text-center">
+                                                            <button type="submit"
+                                                                    class="btn btn-danger btn-sm">Delete
+                                                            </button>
+                                                        </div>
+                                                    </form>
+
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                        <!-- <tfoot>
+                                            <tr>
+                                                <td>
+                                                    <button class="btn btn-primary mt-3"
+                                                        type="button" data-toggle="modal"
+                                                        data-target="#modal-default">Add
+                                                        Exchange</button>
+                                                </td>
+                                            </tr>
+                                        </tfoot> -->
+                                    </table>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="alert mt-4 alert-warning" role="alert">
+                                The is no obsolete film!
+                            </div>
+
+                        {% endif %}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

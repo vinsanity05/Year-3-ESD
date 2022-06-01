@@ -1,0 +1,265 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>
+        Login
+    </title>
+    <!-- Fonts and icons     -->
+    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"/>
+    <!-- Font Awesome Icons -->
+    <!-- <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script> -->
+
+    <!-- Bootstrap 4 CSS cdn -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- CSS Files -->
+    <!-- <link id="pagestyle" href="{% static 'css/material-kit-pro.css?v=3.0.0' %}" rel="stylesheet" /> -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet"/>
+</head>
+
+<body class="sign-in-basic">
+        background-size: auto; background-position-x: right; background-repeat: no-repeat; background-color: black
+        !important; height: 100%" loading="lazy">
+    <div class="container-fluid px-0" id="bg-div">
+        <div class="row justify-content-center">
+            <div class="col-lg-9 col-12">
+                <div class="card card0">
+                    <div class="d-flex" id="wrapper">
+                        <!-- Sidebar -->
+                        <div class="bg-light border-right" id="sidebar-wrapper">
+                            <div class="sidebar-heading pt-5 pb-4"><strong>ACCOUNT MANAGER</strong></div>
+                            <div class="list-group list-group-flush">
+                                <!-- <a data-toggle="tab" href="#menu1" id="tab1" class="tabs list-group-item active1">
+                                    <div class="list-div my-2">
+                                        <div class="fa fa-hotel"></div> &nbsp;&nbsp; Club & Club Rep
+                                    </div>
+                                </a>
+
+                                <a data-toggle="tab" href="#menu2" id="tab2" class="tabs list-group-item bg-light">
+                                    <div class="list-div my-2">
+                                        <div class="fas fa-tv"></div> &nbsp;&nbsp;&nbsp; Add Film<i
+                                            class="fa fa-television"></i>
+                                    </div>
+                                </a>
+
+                                <a data-toggle="tab" href="#menu3" id="tab3" class="tabs list-group-item bg-light">
+                                    <div class="list-div my-2">
+                                        <div class="fa fa-tv"></div> &nbsp;&nbsp;&nbsp; Delete Obsolete Film<i
+                                            class="fas fa-camera-movie"></i>
+                                    </div>
+                                </a> -->
+
+                                <a href="{% url 'addAccount' %}" id="tab1" {% if request.path == '/manager' %}
+                                   class="tabs list-group-item active1"
+                                {% else %}
+                                   class="tabs list-group-item bg-light"
+                                {% endif %} >
+                                    <div class="list-div my-2">
+                                        <div class="fa fa-film"></div> &nbsp;&nbsp;&nbsp; Add New Account<i
+                                            class="fas fa-camera-movie"></i>
+                                        <!-- <span id="new-label">NEW</span> -->
+                                    </div>
+
+                                </a>
+
+                                <a href="{% url 'registeredAccounts' %}" id="tab2"
+                                        {% if request.path == '/manager/registeredAccounts' %}
+                                   class="tabs list-group-item active1"
+                                        {% else %}
+                                   class="tabs list-group-item bg-light"
+                                        {% endif %} >
+                                    <div class="list-div my-2">
+                                        <div class="fa fa-film"></div> &nbsp;&nbsp;&nbsp; Registered Accounts<i
+                                            class="fas fa-camera-movie"></i>
+                                        <!-- <span id="new-label">NEW</span> -->
+                                    </div>
+
+                                </a>
+
+                                <a href="{% url 'dailyTransactions' %}" id="tab3"
+                                        {% if request.path == '/manager/dailyTransactions' %}
+                                   class="tabs list-group-item active1"
+                                        {% else %}
+                                   class="tabs list-group-item bg-light"
+                                        {% endif %} >
+                                    <div class="list-div my-2">
+                                        <div class="fa fa-film"></div> &nbsp;&nbsp;&nbsp; Daily Transactions<i
+                                            class="fas fa-camera-movie"></i>
+                                        <!-- <span id="new-label">NEW</span> -->
+                                    </div>
+
+                                </a>
+
+                                <a href="{% url 'accountStatements' %}" id="tab6"
+                                        {% if request.path == '/manager/accountStatements' %}
+                                   class="tabs list-group-item active1"
+                                        {% else %}
+                                   class="tabs list-group-item bg-light"
+                                        {% endif %} >
+                                    <div class="list-div my-2">
+                                        <div class="fa fa-tv"></div> &nbsp;&nbsp;&nbsp; Account Statements<i
+                                            class="fas fa-camera-movie"></i>
+                                    </div>
+                                </a>
+
+                                <a href="{% url 'account-logout' %}" id="tab7"
+                                        {% if request.path == '/manager/logout' %}
+                                   class="tabs list-group-item active1"
+                                        {% else %}
+                                   class="tabs list-group-item bg-light"
+                                        {% endif %} >
+                                    <div class="list-div my-2">
+                                        <div class="fa fa-arrow-left"></div> &nbsp;&nbsp;&nbsp; Log Out<i
+                                            class="fas fa-camera-movie"></i>
+                                    </div>
+                                </a>
+
+                            </div>
+                        </div> <!-- Page Content -->
+                        <div id="page-content-wrapper">
+                            <div class="row pt-3" id="border-btm">
+                                <div class="col-1 d-md-none d-lg-none">
+                                    <button class="btn btn-primary bg-gradient-primary mt-4 ml-3 mb-3"
+                                            id="menu-toggle">
+                                        <div class="bar4"></div>
+                                        <div class="bar4"></div>
+                                        <div class="bar4"></div>
+                                    </button>
+                                </div>
+                                <div class="col-12">
+                                    <div class="row justify-content-center">
+                                        <div class="col-12">
+                                            <h1
+                                                    class="mt-4 mb-4 text-center font-weight-bold text-primary text-uppercase">
+                                                Cinema Booking System</h1>
+                                        </div>
+                                    </div>
+                                </div>ƒstat
+
+                                <!-- <div class="col-3">
+                                <div class="row justify-content-right">
+                                    <div class="col-12">
+                                        <p class="mb-0 mr-4 mt-4 text-right">customer@email.com</p>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-right">
+                                    <div class="col-12">
+                                        <p class="mb-0 mr-4 text-right">Pay <span class="top-highlight">$
+                                                100</span> </p>
+                                    </div>
+                                </div>
+                            </div> -->
+                            </div>
+                            <!-- <div class="row justify-content-center">
+                            <div class="text-center" id="test">Pay</div>
+                        </div> -->
+                            <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                                <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+                                    <path
+                                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                                </symbol>
+                                <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+                                    <path
+                                            d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+                                </symbol>
+                                <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+                                    <path
+                                            d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                                </symbol>
+                            </svg>
+
+                            <div class="tab-content">
+                                {% block content %}
+
+
+                                {% endblock %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--   Core JS Files   -->
+<!-- Bootstrap 4 JS cdn -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+<!-- <script src="{% static 'js/core/popper.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/core/bootstrap.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/js-main.js' %}" type="text/javascript"></script> -->
+<script>
+    $(document).ready(function () {
+        //Menu Toggle Script
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+
+        // For highlighting activated tabs
+        $("#tab1").click(function () {
+            $(".tabs").removeClass("active1");
+            $(".tabs").addClass("bg-light");
+            $("#tab1").addClass("active1");
+            $("#tab1").removeClass("bg-light");
+        });
+        $("#tab2").click(function () {
+            $(".tabs").removeClass("active1");
+            $(".tabs").addClass("bg-light");
+            $("#tab2").addClass("active1");
+            $("#tab2").removeClass("bg-light");
+        });
+        $("#tab3").click(function () {
+            $(".tabs").removeClass("active1");
+            $(".tabs").addClass("bg-light");
+            $("#tab3").addClass("active1");
+            $("#tab3").removeClass("bg-light");
+        });
+        $("#tab4").click(function () {
+            $(".tabs").removeClass("active1");
+            $(".tabs").addClass("bg-light");
+            $("#tab4").addClass("active1");
+            $("#tab4").removeClass("bg-light");
+        });
+        $("#tab5").click(function () {
+            $(".tabs").removeClass("active1");
+            $(".tabs").addClass("bg-light");
+            $("#tab5").addClass("active1");
+            $("#tab5").removeClass("bg-light");
+        });
+        $("#tab6").click(function () {
+            $(".tabs").removeClass("active1");
+            $(".tabs").addClass("bg-light");
+            $("#tab6").addClass("active1");
+            $("#tab6").removeClass("bg-light");
+        });
+        $("#tab7").click(function () {
+            $(".tabs").removeClass("active1");
+            $(".tabs").addClass("bg-light");
+            $("#tab7").addClass("active1");
+            $("#tab7").removeClass("bg-light");
+        });
+        $("#tab8").click(function () {
+            $(".tabs").removeClass("active1");
+            $(".tabs").addClass("bg-light");
+            $("#tab8").addClass("active1");
+            $("#tab8").removeClass("bg-light");
+        });
+    })
+</script>
+</body>
+
+</html>

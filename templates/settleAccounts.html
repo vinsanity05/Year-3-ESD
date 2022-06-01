@@ -1,0 +1,73 @@
+{% extends "studentRepHome.html" %}
+{% block title %} Add Credit {% endblock %} {% block content %} {% load crispy_forms_tags %}
+<br>
+<h4>{{clubName}} Club account balance is currently: {{balance}}</h4>
+<h4>For card: **** **** **** {{cardEnd}}</h4>
+<br>
+<form>
+    <label for="amount">Amount</label>
+    <input type="number" id="amount" name="amount" min="0.01" step="0.01" required>
+    <button type="submit" class="btn btn-success">Credit Account</button>
+</form>
+<br>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+    {% endfor %}
+</ul>
+{% endif %} 
+
+
+<br>
+<div class="row">
+	<div class="col">
+		<div class="card card-body">
+
+			<form method="get">
+				{{myFilter.form|crispy}}
+
+		    <button class="btn btn-primary" type="submit">Search</button>
+		  </form>
+
+		</div>
+	</div>
+	
+</div>
+<br>
+
+<br>
+	<div class="row">
+		<div class="col-md">
+			<div class="card card-body">
+				<table class="table">
+					<tr>
+						<th>Account</th>
+                        <th>Representative</th>
+                        <th>Date</th>
+                        <th>Amount</th>
+					</tr>
+
+					{% for i in transactions %}
+						<tr>
+							<td>{{i.account}}</td>
+                            <td>{{i.representative}}</td>
+                            <td>{{i.date}}</td>
+                            <td>{{i.amount}}</td>
+						</tr>
+					{% endfor %}
+                        <tr>
+							<td></td>
+                            <td></td>
+                            <td><b>Total:</b></td>
+                            <td><b>{{totalValue}}</b></td>
+                        </tr>
+
+				</table>
+			</div>
+		</div>
+			
+	</div>
+
+
+{% endblock %}

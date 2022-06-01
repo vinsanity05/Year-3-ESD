@@ -1,0 +1,74 @@
+{% extends "index.html" %} {% block title %} UWEFlix HomePage {% endblock %} {% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="{% static 'css/tooplate-infinite-loop.css' %}" rel="stylesheet"/>
+<section>
+    <div>
+        <ul>
+        </ul>
+    </div>
+</section>
+</head>
+
+<body>
+    <span class=""></span>
+    <div">
+        <div>
+            <div class="col-md-7 col-8 mx-auto">
+                <div>   
+                    <div>
+                        <h4 class="main-text">Please choose the date of the showing below!</h4> 
+                        </div> 
+                        <form>
+            </div>
+            <br>
+                <div class="bckground">
+                            <input class="date-config" type="date" id="date" name="date">
+                            <input class="btn " type="submit">
+                        </form>
+                             <div >
+                                {% if date == today %}
+                                {% else %}
+                                <br>
+                                <div >
+                                <label class="tm-text-seconds">Showings on {{date}}</label>
+                                {% endif %}
+                                <br>
+                                {% if none %}
+                                <label class="tm-text-seconds">{{none}}</label>
+                                <br>
+                                {% else %}
+                            </div>
+                                <form>
+                        <label class="tm-text-primary text-align: center" for="show">Select showing:</label>
+                        <br>
+                            <select class = "date-config" name="show" id="show">
+                                {% for show in show_list %}
+                                <div>
+                                <option class="date-config" value="{{ show.id }}">
+                                {{ show.film }} at {{ show.time }}
+                                </option>
+                            {% endfor %}
+                        </div>
+                            <br>
+                            </select>
+                        <input class="btn" type="submit">
+                        </form>
+                    </div>
+                        {% endif %}
+                        {% if messages %}
+                        <ul class="messages">
+                            {% for message in messages %}
+                            <li {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+</html>
+ {% endblock %}

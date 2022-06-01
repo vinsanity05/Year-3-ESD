@@ -1,0 +1,48 @@
+{% extends "index.html" %} {% block title %} UWEFlix HomePage {% endblock %} {% block content %}
+{% load static %}
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <link href="{% static 'css/tooplate-infinite-loop.css' %}" rel="stylesheet"/>
+  <section>
+      <div>
+          <ul>
+          </ul>
+      </div>
+  </section>
+  </head>
+  
+  <body>
+      <span class=""></span>
+      <div">
+          <div>
+              <div class="col-md-7 col-8 mx-auto">
+                  <div>   
+                      <div>
+                        {% if total_price %}
+                        <div class = "third font-size: 30px">Tickets successfully booked!</div>
+                          <br>
+                            <div class="secondary-text">You are watching <b>{{ film.title }}</b></div>
+                              <div class="secondary-text">On {{ show.date }} at {{ show.time }}</div>
+                              <br>
+                                <div class="secondary-text"><b>Screen {{ screen.screen_number }}</b></div>
+                              <br>
+                                <div class="secondary-text">Purchase Summary:</div>
+                                <div class="third">{{ booking.studentQty }}x Student Tickets</div>
+                                  <div class="third">{{ booking.adultQty }}x Adult Tickets</div>
+                                <div class="third">{{ booking.childQty }}x Child Tickets</div>
+                                <br>
+                              <div class="secondary-text">Price: {{ total_price }}</div>
+                              <br>
+                            <div class="secondary-text">Booking reference: <b class = "third">{{ booking.id }}</b></div>
+                            <div class="secondary-text">Keep this reference number safe, it will be required to cancel a booking.</div>
+                            {% else %}
+                        <div class="secondary-text">Booking unsuccessful.</h5>
+                  </div>
+              </div>
+          </div>
+      </div>
+      </body>
+      {% endif %}
+  </html>
+   {% endblock %}

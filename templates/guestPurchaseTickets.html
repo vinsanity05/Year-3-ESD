@@ -1,0 +1,45 @@
+{% extends "index.html" %} {% block title %} UWEFlix HomePage {% endblock %} {% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="{% static 'css/tooplate-infinite-loop.css' %}" rel="stylesheet"/>
+<section>
+    <div>
+        <ul>
+        </ul>
+    </div>
+</section>
+</head>
+
+<body>
+    <span class=""></span>
+    <div">
+        <div>
+            <div class="col-md-7 col-8 mx-auto">
+                <div>   
+                    <div>
+                        <div class="primary-text">Booking Total</div>
+                        <br>
+                        {% if total_price %}
+                        <div class = "secondary-text">{{ booking.studentQty }}x Student Tickets: {{ student_price }}: <b>{{ student_total }}</b> </div>
+                          <div class = "secondary-text">{{ booking.adultQty }}x Adult Tickets: {{ adult_price }}: <b>{{ adult_total }}</b> </div>
+                            <div class = "secondary-text">{{ booking.childQty }}x Child Tickets: {{ child_price }}: <b>{{ child_total }}</b> </div>
+                        <br>
+                       <div class = "secondary-text"> Total: <b>{{ total_price }}</b></div>
+                       <br>
+                       <form method="get">
+                           <input type="number" id="show" name="show" value="{{show.id}}" hidden>
+                           <input type="number" id="booking" name="booking" value="{{booking.id}}" hidden>
+                           <input type="submit" class="btn" value="Advance" name="advance">
+                         </form>
+                         {% else %}
+                         <h5>Please select a ticket.</h5>
+                         {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+</html>
+ {% endblock %}

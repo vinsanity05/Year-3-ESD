@@ -1,0 +1,203 @@
+{% extends 'manager.html' %}
+{% block content %}
+    <div class="tab-pane in active">
+        <div class="row justify-content-center">
+            <div class="col-11">
+                <div class="form-card">
+                    <h3 class="mt-5 mb-5 text-center">List of Registered Account</h3>
+                    {% if FilmForm.errors %}
+                        {% for field in ShowForm %}
+                            {% for error in field.errors %}
+                                <div class="alert alert-danger alert-dismissible fade show"
+                                     role="alert">
+                                    <strong>{{ error|escape }}</strong>
+                                    <button type="button" class="btn-close"
+                                            data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                        {% for error in ShowForm.non_field_errors %}
+                            <div class="alert alert-danger alert-dismissible fade show"
+                                 role="alert">
+                                <strong>{{ error|escape }}</strong>
+                                <button type="button" class="btn-close"
+                                        data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+
+                    {% if messages %}
+                        <ul class="messages">
+                            {% for message in messages %}
+                                <div class="alert alert-success alert-dismissible fade show"
+                                     role="alert">
+                                    <svg class="bi flex-shrink-0 me-2" width="24"
+                                         height="24"
+                                         role="img" aria-label="Success:">
+                                        <use xlink:href="#check-circle-fill"/>
+                                    </svg>
+                                    <strong>{{ message }}</strong>
+                                    <button type="button" class="close" data-dismiss="alert"
+                                            aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+
+                    <div class="card shadow mb-4 mt-5">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Accounts
+                            </h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table" id="dataTable" width="100%"
+                                       cellspacing="0">
+                                    <!-- <thead>
+                                        <tr>
+                                            <th>Sr. #</th>
+                                            <th>Current Accounts</th>
+                                            <th class="text-center">Action</th>
+                                        </tr>
+                                    </thead> -->
+                                    <thead>
+                                    <tr>
+{#                                        <th>Sr. #</th>#}
+                                        <th>Club Name</th>
+                                        <th>Account Title</th>
+                                        <th class="text-center">Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for account in accounts %}
+                                        <tr>
+{#                                            <td>{{ forloop.counter }}</td>#}
+                                            <td>{{ account.club }}</td>
+                                            <td>{{ account.title }}</td>
+                                            <td class="py-0 align-middle">
+                                                <div class="text-right">
+                                                    <a href="{% url 'editAccount' account.id %}" class="btn btn-info btn-sm"><i
+                                                            class="fas fa-edit"></i> &nbsp; Edit
+                                                        Account</a>
+                                                    <a href="{% url 'accountStatements' %}"
+                                                       class="btn btn-success btn-sm"><i
+                                                            class="fas fa-eye"></i> &nbsp; View
+                                                        Statement</a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+
+                                    </tbody>
+                                    <tfoot>
+                                    <tr>
+                                        <td>
+                                            <a class="btn btn-primary bg-gradient-primary mt-3"
+                                                    type="button" href="{% url 'addAccount' %}">Add New
+                                                Account
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        {#                                        <div class="modal fade" id="modal-default">#}
+        {#                                            <div class="modal-dialog">#}
+        {#                                              <div class="modal-content">#}
+        {#                                                <div class="modal-header">#}
+        {#                                                  <h4 class="modal-title">Add Details of New Account</h4>#}
+        {#                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">#}
+        {#                                                    <span aria-hidden="true">&times;</span>#}
+        {#                                                  </button>#}
+        {#                                                </div>#}
+        {#                                                <div class="modal-body">#}
+        {#                                                    <form method="POST">#}
+        {#                                                        {% csrf_token %}#}
+        {#                                                        {% if messages %}#}
+        {#                                                        <ul class="messages">#}
+        {#                                                            {% for message in messages %}#}
+        {#                                                            <div class="alert alert-success alert-dismissible fade show"#}
+        {#                                                                role="alert">#}
+        {#                                                                <svg class="bi flex-shrink-0 me-2" width="24"#}
+        {#                                                                    height="24" role="img" aria-label="Success:">#}
+        {#                                                                    <use xlink:href="#check-circle-fill" />#}
+        {#                                                                </svg>#}
+        {#                                                                <strong>{{ message }}</strong>#}
+        {#                                                                <button type="button" class="close" data-dismiss="alert"#}
+        {#                                                                    aria-label="Close">#}
+        {#                                                                    <span aria-hidden="true">&times;</span>#}
+        {#                                                                </button>#}
+        {#                                                            </div>#}
+        {#                                                            {% endfor %}#}
+        {#                                                        </ul>#}
+        {#                                                        {% endif %}#}
+        {#                                                        <div class="row justify-content-center">#}
+        {#                                                            <div class="col-6">#}
+        {#                                                                <div class="input-group">#}
+        {#                                                                    <label>Name of Club / Username</label>#}
+        {#                                                                    <!-- {{ FilmForm.title }} -->#}
+        {#                                                                    <input type="text" placeholder="">#}
+        {#                                                                </div>#}
+        {#                                                            </div>#}
+        {#                                                        </div>#}
+        {#                                                        <div class="row justify-content-center">#}
+        {#                                                            <div class="col-lg-6">#}
+        {#                                                                <label>Payment Details for the Account</label>#}
+        {#                                                            </div>#}
+        {#                                                        </div>#}
+        {#                                                        <div class="row justify-content-center">#}
+        {#                                                            <div class="col-3">#}
+        {#                                                                <div class="input-group">#}
+        {#                                                                    <!-- <label>Card Number</label> -->#}
+        {#                                                                    <!-- {{ FilmForm.duration }} -->#}
+        {#                                                                    <input type="text" placeholder="Card Number">#}
+        {#                                                                </div>#}
+        {#                                                            </div>#}
+        {#                                                            <div class="col-3">#}
+        {#                                                                <div class="input-group input-group-outline">#}
+        {#                                                                    <!-- <label for="desc">Expiry Date</label> -->#}
+        {#                                                                    <!-- {{ FilmForm.description }} -->#}
+        {#                                                                    <input type="text" placeholder="Expiry Date">#}
+        {#                                                                </div>#}
+        {#                                                            </div>#}
+        {#                                                        </div>#}
+        {#                                                        <div class="row justify-content-center">#}
+        {#                                                            <div class="col-6">#}
+        {#                                                                <div class="input-group input-group-outline">#}
+        {#                                                                    <label for="desc">Discount rate</label>#}
+        {#                                                                    <!-- {{ FilmForm.description }} -->#}
+        {#                                                                    <input type="text" placeholder="">#}
+        {#                                                                </div>#}
+        {#                                                            </div>#}
+        {#                                                        </div>#}
+        {#                                                        <div class="row justify-content-center">#}
+        {#                                                            <div class="col-6">#}
+        {#                                                                <input type="submit" name="FilmFormSubmit" value="Apply"#}
+        {#                                                                    class="btn btn-primary bg-gradient-primary placeicon">#}
+        {#                                                            </div>#}
+        {#                                                        </div>#}
+        {#                                                    </form>#}
+        {#                                                </div>#}
+        {#                                                <div class="modal-footer justify-content-between">#}
+        {#                                                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>#}
+        {#                                                  <button type="button" class="btn btn-primary">Save changes</button>#}
+        {#                                                </div>#}
+        {#                                              </div>#}
+        {#                                              <!-- /.modal-content -->#}
+        {#                                            </div>#}
+        {#                                            <!-- /.modal-dialog -->#}
+        {#                                          </div>#}
+    </div>
+{% endblock %}
+
+

@@ -1,0 +1,205 @@
+{% extends 'manager.html' %}
+{% block content %}
+    <!--<Manage Shows Tab Design-->
+    <div id="menu1" class="tab-pane in active">
+        <div class="row justify-content-center">
+            <div class="col-11">
+                <div class="form-card">
+                    <h3 class="mt-5 mb-5 text-center">Manage Accounts</h3>
+                    {% if AccountForm.errors %}
+                        {% for field in AccountForm %}
+                            {% for error in field.errors %}
+                                <div class="alert alert-danger alert-dismissible fade show"
+                                     role="alert">
+                                    <strong>{{ error|escape }}</strong>
+                                    <button type="button" class="btn-close"
+                                            data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                        {% for error in AccountForm.non_field_errors %}
+                            <div class="alert alert-danger alert-dismissible fade show"
+                                 role="alert">
+                                <strong>{{ error|escape }}</strong>
+                                <button type="button" class="btn-close"
+                                        data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+
+                    {% if messages %}
+                        <ul class="messages">
+                            {% for message in messages %}
+                                <div class="alert alert-success alert-dismissible fade show"
+                                     role="alert">
+                                    <svg class="bi flex-shrink-0 me-2" width="24"
+                                         height="24" role="img" aria-label="Success:">
+                                        <use xlink:href="#check-circle-fill"/>
+                                    </svg>
+                                    <strong>{{ message }}</strong>
+                                    <button type="button" class="close"
+                                            data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+
+                    <div class="row">
+                        <div class="col-lg-3 col-4"></div>
+                        <div class="col-lg-6 col-4">
+                            <form method="POST">
+                                {% csrf_token %}
+                                <div class="row mb-4">
+                                    <div class="col-lg-12 col-12">
+                                        <div class="input-group input-group-outline">
+
+                                            <label>Select Club</label>
+                                            {{ AccountForm.club }}
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12 col-12">
+                                        <div class="input-group input-group-outline">
+                                            <label for="birthday">Account Title</label>
+                                            {#                                                                        <input type="text" placeholder="University Club Name / Username">#}
+                                            {{ AccountForm.title }}
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12 col-12">
+                                        <div class="input-group input-group-outline">
+                                            <label for="birthday">Card Number</label>
+                                            {#                                                                        <input type="text" placeholder="0000 0000 0000 0000">#}
+                                            {{ AccountForm.card_number }}
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12 col-12">
+                                        <div class="input-group input-group-outline">
+                                            <label for="birthday">Expiry Date</label>
+                                            {#                                                                        <input type="month" placeholder="">#}
+                                            {{ AccountForm.expiry_date }}
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12 col-12">
+                                        <div class="input-group input-group-outline">
+                                            <label for="birthday">Discount rate %</label>
+                                            {#                                                                        <input type="text" placeholder="%">#}
+                                            {{ AccountForm.discount_rate }}
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12 col-12"><input type="submit"
+                                                                         name="AccountFormSubmit"
+                                                                         value="Apply"
+                                                                         class="btn btn-primary bg-gradient-primary placeicon">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        {#                                                    <div class="col-lg-6 col-12">#}
+                        {#                                                        <form method="POST">#}
+                        {#                                                            {% csrf_token %}#}
+                        {#                                                            <div class="row mb-4">#}
+                        {#                                                                <div class="col-lg-12 col-12">#}
+                        {#                                                                    <div class="input-group input-group-outline">#}
+                        {##}
+                        {#                                                                        <label>Select Club</label>#}
+                        {#                                                                        <!-- {{ ShowForm.film }} -->#}
+                        {#                                                                        <select class="form-control" style="width: 100%;">#}
+                        {#                                                                            <option>Alabama</option>#}
+                        {#                                                                            <option>Alaska</option>#}
+                        {#                                                                            <option>California</option>#}
+                        {#                                                                            <option>Delaware</option>#}
+                        {#                                                                            <option>Tennessee</option>#}
+                        {#                                                                            <option>Texas</option>#}
+                        {#                                                                            <option>Washington</option>#}
+                        {#                                                                          </select>#}
+                        {##}
+                        {#                                                                    </div>#}
+                        {#                                                                </div>#}
+                        {#                                                            </div>#}
+                        {#                                                            <div class="row mb-4">#}
+                        {#                                                                <div class="col-lg-12 col-12">#}
+                        {#                                                                    <div class="input-group input-group-outline">#}
+                        {##}
+                        {#                                                                        <label>Select Account</label>#}
+                        {#                                                                        <!-- {{ ShowForm.film }} -->#}
+                        {#                                                                        <select class="form-control" style="width: 100%;">#}
+                        {#                                                                            <option>Alabama</option>#}
+                        {#                                                                            <option>Alaska</option>#}
+                        {#                                                                            <option>California</option>#}
+                        {#                                                                            <option>Delaware</option>#}
+                        {#                                                                            <option>Tennessee</option>#}
+                        {#                                                                            <option>Texas</option>#}
+                        {#                                                                            <option>Washington</option>#}
+                        {#                                                                          </select>#}
+                        {##}
+                        {#                                                                    </div>#}
+                        {#                                                                </div>#}
+                        {#                                                            </div>#}
+                        {#                                                            <div class="row">#}
+                        {#                                                                <div class="col-lg-12 col-12">#}
+                        {#                                                                    <div class="input-group input-group-outline">#}
+                        {#                                                                        <label for="birthday">Account Title</label>#}
+                        {#                                                                        <input type="text" placeholder="University Club Name / Username">#}
+                        {#                                                                    </div>#}
+                        {#                                                                </div>#}
+                        {##}
+                        {#                                                            </div>#}
+                        {#                                                            <div class="row">#}
+                        {#                                                                <div class="col-lg-12 col-12">#}
+                        {#                                                                    <div class="input-group input-group-outline">#}
+                        {#                                                                        <label for="birthday">Card Number</label>#}
+                        {#                                                                        <input type="text" placeholder="0000 0000 0000 0000">#}
+                        {#                                                                    </div>#}
+                        {#                                                                </div>#}
+                        {##}
+                        {#                                                            </div>#}
+                        {#                                                            <div class="row">#}
+                        {#                                                                <div class="col-lg-12 col-12">#}
+                        {#                                                                    <div class="input-group input-group-outline">#}
+                        {#                                                                        <label for="birthday">Expiry Date</label>#}
+                        {#                                                                        <input type="month" placeholder="">#}
+                        {#                                                                    </div>#}
+                        {#                                                                </div>#}
+                        {##}
+                        {#                                                            </div>#}
+                        {#                                                            <div class="row">#}
+                        {#                                                                <div class="col-lg-12 col-12">#}
+                        {#                                                                    <div class="input-group input-group-outline">#}
+                        {#                                                                        <label for="birthday">Discount rate</label>#}
+                        {#                                                                        <input type="text" placeholder="%">#}
+                        {#                                                                    </div>#}
+                        {#                                                                </div>#}
+                        {##}
+                        {#                                                            </div>#}
+                        {#                                                            <div class="row">#}
+                        {#                                                                <div class="col-lg-12 col-12"><input type="submit" name="ShowFormSubmit" value="Apply" #}
+                        {#                                                                    class="btn btn-primary bg-gradient-primary placeicon">#}
+                        {#                                                                </div>#}
+                        {#                                                            </div>#}
+                        {#                                                        </form>#}
+                        {#                                                    </div>#}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

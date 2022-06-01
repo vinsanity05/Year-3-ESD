@@ -1,0 +1,47 @@
+{% extends 'manager.html' %}
+{% block content %}
+<br>
+<div class="row">
+	<div class="col">
+		<div class="card card-body">
+
+			<form method="get">
+				{{myFilter.form|crispy}}
+
+		    <button class="btn btn-primary" type="submit">Search</button>
+		  </form>
+
+		</div>
+	</div>
+	
+</div>
+<br>
+
+
+<br>
+	<div class="row">
+		<div class="col-md">
+			<div class="card card-body">
+				<table class="table">
+					<tr>
+						<th>Account</th>
+                        <th>Representative</th>
+                        <th>Date</th>
+                        <th>Amount</th>
+					</tr>
+
+					{% for i in transactions %}
+						<tr>
+							<td>{{i.account}}</td>
+                            <td>{{i.representative}}</td>
+                            <td>{{i.date}}</td>
+                            <td>{{i.amount}}</td>
+						</tr>
+					{% endfor %}
+						
+				</table>
+			</div>
+		</div>
+			
+	</div>
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends "index.html" %} {% block title %} UWEFlix Login page {% endblock %} {% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="{% static 'css/tooplate-infinite-loop.css' %}" rel="stylesheet"/>
+<section>
+    <div class="row-2">
+        <ul>
+            <li><a href="index.html" class="active"><p style="margin-top: 0px;"></p></a></li>
+        </ul>
+    </div>
+</section>
+</head>
+
+<body class="infinite">
+<span class=""></span>
+<div>
+    <div>
+        <div class="col-lg-4 col-md-6 col-10 mx-auto blur-shadow-image">
+            <div>
+                    <h4 class="tm-text-primary">Sign In</h4>
+                    <p class="mb-0 text-primary">Enter your email and password to sign in</p>
+                </div>
+                <div class="card-body blur-shadow-image transparant">
+                    <form method="POST" action="" class="text-start">
+                        {% csrf_token %}
+                        {% for message in messages %}
+                        <p id="messages">{{message}}</p>
+                        {% endfor %}
+                        <div class="input-group input-group-outline my-3">
+                                <label class=".text-log-in">Username</label>
+                                <br> </div>
+                            <input name="username" type="text" class="form-control">
+                        <div class="input-group input-group-outline mb-3">
+                            <label class=".text-log-in">Password</label>
+                            <br> </div>
+                            <input name="password" type="password" class="form-control">
+                        </div>
+
+                        <div class="form-check form-switch d-flex align-items-center mb-3">
+                            <input class="form-check-input" type="checkbox" id="rememberMe">
+                            <label class="form-check-label mb-0 ms-2" for="rememberMe">Remember me</label>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Sign
+                                in
+                            </button>
+                        </div>
+                        <p class="mt-4 text-sm text-center text-primary"">
+                            Don't have an account?
+                            <a href="{% url 'register' %}" class="text-primary text-gradient font-weight-bold">Sign
+                                up</a>
+                        </p>
+                    </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!--   Core JS Files   -->
+</body>
+
+</html>
+{% endblock %}
+message.txt
+4 KB

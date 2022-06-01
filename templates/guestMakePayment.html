@@ -1,0 +1,36 @@
+
+{% extends "index.html" %} {% block title %} UWEFlix HomePage {% endblock %} {% block content %}
+{% load static %}
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <link href="{% static 'css/tooplate-infinite-loop.css' %}" rel="stylesheet"/>
+  <section>
+      <div>
+          <ul>
+          </ul>
+      </div>
+  </section>
+  </head>
+  
+  <body>
+      <span class=""></span>
+      <div">
+          <div>
+              <div class="col-md-7 col-8 mx-auto">
+                  <div>   
+                      <div>
+                        <div class = "primary-text">Card Details</div>
+                        <form method="post">
+                        {% load crispy_forms_tags %}
+                        {% csrf_token %} {{ form|crispy }}
+                        <br>
+                        <button type="submit" class="btn">Confirm</button>
+                        </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+      </body>
+  </html>
+   {% endblock %}

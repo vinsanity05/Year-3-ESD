@@ -1,0 +1,21 @@
+{% extends "studentHome.html" %}
+ {% block title %} Purchase Tickets {% endblock %} 
+ {% block content %} {% load crispy_forms_tags %}
+ <br>
+ <h3>Booking Cost and Breakdown</h3>
+ <br>
+ {% if totalPrice %}
+ <h5> Student Ticket: {{ totalPrice }} </h5>
+ {% if discountValue %}
+<br>
+<h5>Discounted Price (Applied {{ discountValue }}% Student Discount): <b>{{ discountPrice }}</b></h5>
+{% endif %}
+<br>
+<form method="get">
+    <input type="number" id="showing" name="showing" value="{{showing.id}}" hidden>
+    <input type="submit" value="Proceed" name="proceed" class="btn btn-success">
+  </form>
+  {% else %}
+  <h5>No tickets were selected, please go back.</h5>
+  {% endif %}
+ {% endblock %}

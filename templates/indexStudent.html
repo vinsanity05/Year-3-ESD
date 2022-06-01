@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Infinite Loop - Bootstrap 4.0 HTML Template</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/tooplate-infinite-loop.css' %}" /> 
+    
+<!--
+Tooplate 2117 Infinite Loop 
+https://www.tooplate.com/view/2117-infinite-loop
+-->
+
+  </head>
+    <!-- Hero section -->
+    <body id="infinite" class="text-white tm-font-big tm-parallax"> 
+      <!-- Navigation -->
+      <nav class="navbar navbar-expand-lg navbar navbar-light" style="background-color: #e3f2fd;">
+        <a class="navbar-brand" href="{% url 'studentHome' %}">Student Dashboard</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'studentHome' %}">Buy Tickets</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'studentAddCredit' %}">Add Credit</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'studentRequestDiscount' %}">Request Discount</a>
+                </li>
+            </ul>
+        </div>
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" href="logout">Log Out</a>
+        </div>
+    </nav>
+      <div class = "spacing"></div>
+        <div class="content", id="tm-content-box">
+            <div class="col-md-7 col-8 mx-auto">
+          {% block content %}
+  
+          {% endblock %}
+          </div>
+        </div>
+  </body>  
+</html>
